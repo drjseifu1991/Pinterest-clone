@@ -9,16 +9,27 @@
       TopNav, CardItem
     },
     data() {
-      image: './assets/profile.jpg'
+      return{
+        posts: [
+          {image:'../assets/post 1.jpg'},
+          {image:'../assets/post 1.jpg'},
+          {image:'../assets/post 1.jpg'},
+          {image:'../assets/post 1.jpg'},
+          {image:'../assets/post 1.jpg'},
+      ]
+      }
+      
     }
   }
 </script>
 
 <template>
   <top-nav/>
-  <div class="px-20 ">
-    <div class="w-1/5">
-      <card-item v-bind:src="image" class="w-full h-full"/>
+  <div class="px-20 flex flex-wrap w-full">
+    <div class="w-1/5" v-for="(post,i) in posts" :key="i">
+      <div class="w-full p-2">
+        <card-item :src="`${post.image}`" class="w-full h-full"/>
+      </div>
     </div>
   </div>
 </template>
